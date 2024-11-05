@@ -9,6 +9,7 @@ const CursorProvider = ({ children }) => {
   // mobile vew
   const mobileViewportIsActive = window.innerWidth < 768;
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!mobileViewportIsActive) {
       const move = (e) => {
@@ -22,23 +23,7 @@ const CursorProvider = ({ children }) => {
     } else {
       setCursorBG("none");
     }
-  }, [mobileViewportIsActive]);
-
-  // to prevent infinite loop
-  /* useEffect(() => {
-  //   if (!mobileViewportIsActive) {
-  //     const move = (e) => {
-  //       setCursorPos({ x: e.clientX, y: e.clientY });
-  //     };
-  //     window.addEventListener("mousemove", move);
-  //     // remove event
-  //     return () => {
-  //       window.removeEventListener("mousemove", move);
-  //     };
-  //   } else {
-  //     setCursorBG('none')
-  //   }
-   }); */
+  });
 
   //cursor variants
   const cursorVariants = {
@@ -54,6 +39,9 @@ const CursorProvider = ({ children }) => {
       y: cursorPos.y - 72,
       backgroundColor: "#fff",
       mixBlendMode: "difference",
+    },
+    none: {
+      display: "none",
     },
   };
 
