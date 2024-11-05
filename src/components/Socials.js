@@ -1,26 +1,34 @@
-import React from "react";
+import { React, useContext } from "react";
 import { ImFacebook, ImGithub, ImInstagram, ImLinkedin } from "react-icons/im";
+// cursor context
+import { CursorContext } from "../context/CursorContext";
+
 
 const Socials = () => {
+  const { mouseEnterHandler, mousLeaveHandler } = useContext(CursorContext);
   return (
-    <div className="hidden xl:flex ml-24">
+    <div
+      onMouseEnter={mouseEnterHandler}
+      onMouseLeave={mousLeaveHandler}
+      className="hidden xl:flex ml-24"
+    >
       <ul className="flex gap-x-4">
-        <li>
+        <li className="transform transition-transform duration-300 hover:scale-125">
           <a href="https://facebook.com" target="_blank" rel="noreferrer">
             <ImFacebook />
           </a>
         </li>
-        <li>
+        <li className="transform transition-transform duration-300 hover:scale-125">
           <a href="https://instagram.com" target="_blank" rel="noreferrer">
-            <ImInstagram /> {/* change later to X */}
+            <ImInstagram />
           </a>
         </li>
-        <li>
+        <li className="transform transition-transform duration-300 hover:scale-125">
           <a href="https://linkedin.com" target="_blank" rel="noreferrer">
             <ImLinkedin />
           </a>
         </li>
-        <li>
+        <li className="transform transition-transform duration-300 hover:scale-125">
           <a href="https://github.com" target="_blank" rel="noreferrer">
             <ImGithub />
           </a>
